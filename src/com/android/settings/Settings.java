@@ -50,6 +50,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.text.TextUtils;
+import android.telephony.MSimTelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -173,7 +174,8 @@ public class Settings extends PreferenceActivity
             R.id.accessibility_settings,
             R.id.print_settings,
             R.id.nfc_payment_settings,
-            R.id.home_settings
+            R.id.home_settings,
+            R.id.privacy_settings_cyanogenmod
     };
 
     private SharedPreferences mDevelopmentPreferences;
@@ -366,7 +368,8 @@ public class Settings extends PreferenceActivity
         HomeSettings.class.getName(),
         ProfilesSettings.class.getName(),
         PerformanceSettings.class.getName(),
-        PolicyNativeFragment.class.getName()
+        PolicyNativeFragment.class.getName(),
+        com.android.settings.cyanogenmod.PrivacySettings.class.getName()
     };
 
     @Override
@@ -650,6 +653,9 @@ public class Settings extends PreferenceActivity
                 if (!DevelopmentSettings.isRootForAppsEnabled()) {
                     target.remove(i);
                 }
+            } else if (id == R.id.multi_sim_settings) {
+                if (!MSimTelephonyManager.getDefault().isMultiSimEnabled())
+                    target.remove(header);
             }
 
             if (i < target.size() && target.get(i) == header
