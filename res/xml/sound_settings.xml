@@ -35,6 +35,11 @@
             android:entries="@array/ring_mode_entries"
             android:entryValues="@array/ring_mode_values" />
 
+    <PreferenceScreen
+            android:key="volume_steps"
+            android:fragment="com.android.settings.carbon.VolumeSteps"
+            android:title="@string/volume_steps_title" />
+
     <ListPreference
             android:key="volume_overlay"
             android:title="@string/volume_overlay_title"
@@ -119,6 +124,12 @@
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="lockscreen_sounds_enabled"
             android:title="@string/lock_sounds_enable_title"
+            android:defaultValue="true" />
+
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="camera_sounds"
+            android:title="@string/camera_sounds_title"
+            android:summary="@string/camera_sounds_summary"
             android:defaultValue="true" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
