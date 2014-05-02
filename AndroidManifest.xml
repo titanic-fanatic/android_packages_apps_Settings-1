@@ -69,6 +69,8 @@
     <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CHANGE_PRIVACY_GUARD_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_BLACKLIST" />
+    <uses-permission android:name="android.permission.CHANGE_PHONE_BLACKLIST" />
 
     <permission
         android:name="android.permission.REQUEST_SUPERUSER"
@@ -160,6 +162,16 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+
+      <!-- screen color Settings Controls -->
+        <activity android:name=".ScreenColorSettings" android:label="@string/screencolor"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="nosensor">
+        </activity>
+        <activity android:name=".CustomScreenColor" android:label="@string/custom_screencolor"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="nosensor">
+        </activity>
 
         <!-- Settings -->
 
@@ -1155,6 +1167,8 @@
         <!-- Lock screen settings -->
         <activity android:name="ConfirmLockPattern"/>
 
+        <activity android:name="ConfirmLockGesture"/>
+
         <activity android:name="ConfirmLockPassword"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
 
@@ -1176,7 +1190,12 @@
 
         <activity android:name="ChooseLockPattern" android:exported="false"/>
 
+        <activity android:name="ChooseLockGesture" android:exported="false"/>
+
         <activity android:name="ChooseLockPassword" android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+
+        <activity android:name="ChooseEncryptionPassword" android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
 
         <!-- Runs in the phone process since it needs access to the Phone object -->
@@ -1797,8 +1816,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".carbon.PerformanceSettings" />
-
         <activity android:name=".ApnEditor" />
 
         <activity android:name=".notificationlight.NotificationLightSettings" />
@@ -1824,7 +1841,39 @@
 
         <activity android:name=".cyanogenmod.PrivacySettings" />
 
+        <activity android:name="Settings$QuietHoursSettingsActivity"
+                  android:label="@string/quiet_hours_title"
+                  android:taskAffinity=""
+                  android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.android.settings.carbon.QuietHours" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                       android:resource="@id/sound_settings" />
+        </activity>
+
         <!-- CyanogenMod activities End -->
+
+        <!-- Pseudo-activity used to provide an intent-filter entry point to sound packages settings -->
+        <activity android:name="Settings$SoundPackageSettingsActivity"
+                android:label="@string/sound_packages_title"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.sounds.SoundPackageSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/sound_settings" />
+            <meta-data android:name="com.android.settings.PARENT_FRAGMENT_CLASS"
+                android:value="com.android.settings.Settings$SoundSettingsActivity" />
+        </activity>
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
@@ -2055,7 +2104,52 @@
         <service android:name="com.carbon.fibers.service.ExternalCommandService"
             android:exported="false" />
 
+        <!-- BatterySaverMode Methods -->
+        <receiver
+            android:name="com.carbon.fibers.fragments.batterysaver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.carbon.fibers.fragments.batterysaver.BatterySaverReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
+                <action android:name="android.intent.action.TIME_CHANGED"></action>
+                <action android:name="android.intent.action.DATE_CHANGED"></action>
+                <action android:name="android.intent.action.BATTERY_SERVICES"></action>
+                <action android:name="com.carbon.fibers.fragments.batterysaver.SCHEDULE_BATTERY_SAVER"/>
+            </intent-filter>
+        </receiver>
+        <!-- End of BatterySaverMode Methods -->
+
         <!-- End of Carbon Application Methods -->
+
+        <!-- PerformanceControl activities -->
+        <activity android:name="com.brewcrewfoo.performance.activities.MainActivity"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.PCSettings"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.PackActivity"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.FlasherActivity"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.FileChooser"
+                  android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.ResidualsActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.iResidualsActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.KSMActivity"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.FreezerActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.brewcrewfoo.performance.activities.GovSetActivity"/>
+
+        <receiver android:name="com.brewcrewfoo.performance.service.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.brewcrewfoo.performance.service.BootService"/>
+        <!-- PerformanceControl activities End -->
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
