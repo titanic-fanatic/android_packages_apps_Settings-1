@@ -43,11 +43,7 @@
         android:title="@string/network_settings_title"
         android:dependency="toggle_airplane">
         <intent
-            android:action="android.settings.DATA_ROAMING_SETTINGS" >
-        <extra android:name="PACKAGE" android:value="com.android.phone" />
-        <extra android:name="TARGET_CLASS"
-               android:value="com.android.phone.MSimMobileNetworkSubSettings" />
-        </intent>
+            android:action="android.settings.DATA_ROAMING_SETTINGS" />
     </header>
 
     <!-- Data Usage -->
@@ -64,14 +60,6 @@
         <intent android:action="com.android.settings.OPERATOR_APPLICATION_SETTING" />
     </header>
 
-    <!-- Other wireless and network controls -->
-    <header
-        android:id="@+id/wireless_settings"
-        android:title="@string/radio_controls_title"
-        android:breadCrumbTitle="@string/wireless_networks_settings_title"
-        android:fragment="com.android.settings.WirelessSettings"
-        android:icon="@drawable/empty_icon" />
-
     <!-- Multi Sim Settings - this is in the settings process -->
     <header
         android:id="@+id/multi_sim_settings"
@@ -82,6 +70,14 @@
             android:targetPackage="com.android.settings"
             android:targetClass="com.android.settings.MultiSimSettings" />
     </header>
+
+    <!-- Other wireless and network controls -->
+    <header
+        android:id="@+id/wireless_settings"
+        android:title="@string/radio_controls_title"
+        android:breadCrumbTitle="@string/wireless_networks_settings_title"
+        android:fragment="com.android.settings.WirelessSettings"
+        android:icon="@drawable/empty_icon" />
 
     <!-- CARBON -->
     <header android:title="@string/header_category_carbon" />
@@ -113,14 +109,11 @@
 
     <!-- Themes -->
     <header
-        android:id="@+id/themes_settings"
-        android:icon="@drawable/ic_settings_themes"
-        android:title="@string/themes_settings_title">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.tmobile.themechooser"
-            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
-    </header>
+        android:id="@+id/themes_cyanogen"
+        android:title="@string/themes_settings_title"
+        android:breadCrumbTitle="@string/themes_settings_title"
+        android:fragment="com.android.settings.ThemeSettings"
+        android:icon="@drawable/prd_ic_themepacks" />
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
