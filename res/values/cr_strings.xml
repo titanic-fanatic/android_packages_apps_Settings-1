@@ -18,13 +18,6 @@
     <!-- About Carbon string -->
     <string name="about_carbon_title">About CarbonROM</string>
 
-    <!--Notification category-->
-    <string name="notification_category">Notifications</string>
-
-    <!--Notification peek-->
-    <string name="notification_peek_title">Notification peek</string>
-    <string name="notification_peek_summary">Show latest notification after picking up your device</string>
-
     <!-- General strings -->
     <string name="enabled">Enabled</string>
     <string name="volume">Volume</string>
@@ -41,6 +34,10 @@
     <string name="wifi_setting_priority_summary">Specify the priority of the Wi-Fi networks</string>
     <!-- WiFi forget all networks -->
     <string name="wifi_menu_forget_all">Forget all networks</string>
+    <!-- Wi-Fi SSID string limits -->
+    <string name="wifi_ssid_input_limit">SSID exceeds maximum length</string>
+    <!-- Wi-Fi P2P string limits -->
+    <string name="p2p_device_name_input_limit">P2P name exceeds maximum length</string>
 
     <!--  Title for PreferenceScreen to change encryption password [CHAR LIMIT=22]  -->
     <string name="change_crypt_password_title">Change password</string>
@@ -67,15 +64,6 @@
     <!-- Sound settings screen, setting check box label -->
     <string name="camera_sounds_title">Camera shutter sound</string>
     <string name="camera_sounds_summary">WARNING: Disabling the camera shutter sound is illegal in some areas!</string>
-
-    <!-- Sound themes -->
-    <string name="sound_packages_title">Sound packs</string>
-    <string name="install_sound_pack_title">Install sound pack</string>
-    <string name="install_sound_pack_summary">Install new sound packs added in SoundPacks folder on the internal storage</string>
-    <string name="select_sound_pack_title">Select sound pack</string>
-    <string name="select_sound_pack_summary">Select the active sound pack</string>
-    <string name="default_sound_pack">Default (System)</string>
-    <string name="error_pack_install">Error while installing the sound pack</string>
 
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Profiles</string>
@@ -359,7 +347,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="display_rotation_title">Rotation</string>
     <string name="display_rotation_disabled">Disabled</string>
     <string name="display_rotation_unit">degrees</string>
-    <string name="display_lockscreen_rotation_title">Rotate lock screen</string>
     <string name="display_rotation_category_title">Rotation modes</string>
     <string name="display_rotation_0_title">0 degrees</string>
     <string name="display_rotation_90_title">90 degrees</string>
@@ -447,10 +434,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Performance settings -->
     <string name="performance_settings">Performance</string>
-
-    <!-- Kill app long-press back -->
-    <string name="kill_app_longpress_back">Kill app back button</string>
-    <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back button</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings  -->
     <string name="advanced_settings_title">Advanced</string>
@@ -563,6 +546,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Lockscreen widget settings -->
     <string name="lockscreen_widgets_title">Widgets</string>
+    <string name="lockscreen_allow_all_title">Allow all widgets</string>
+    <string name="lockscreen_allow_all_summary">Allow legacy widgets that don\'t natively support lock screen placement</string>
+    <string name="lockscreen_allow_all_warning">Some widgets may not behave as expected when placed on the lock screen.  Other widgets may expose your personal data to anyone who accesses your device.  Please be mindful of these warnings before continuing.</string>
     <string name="lockscreen_camera_widget_title">Enable camera widget</string>
     <string name="lockscreen_camera_widget_summary">Show secure camera widget on the lock screen</string>
     <string name="lockscreen_maximize_widgets_title">Start maximized</string>
@@ -573,6 +559,28 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_use_widget_container_carousel_summary">Use carousel animation in portrait when switching between lock screen widgets</string>
     <string name="lockscreen_widget_frame_title">Disable widget frames</string>
     <string name="lockscreen_widget_frame_summary">Disable widget background frames</string>
+
+    <!-- Shake sensitivity -->
+    <string name="shake_sensitivity_title">Shake sensitivity</string>
+    <string name="shake_sensitivity_summary">Global sensitivity of all shake preferences</string>
+    <string name="shake_sensitivity_even_less_sensitive">Very insensitive</string>
+    <string name="shake_sensitivity_less_sensitive">Less sensitive</string>
+    <string name="shake_sensitivity_more_sensitive">More sensitive</string>
+    <string name="shake_sensitivity_very_sensitive">Very sensitive</string>
+    <string name="shake_sensitivity_super_sensitive">Super sensitive</string>
+    <string name="shake_sensitivity_ultra_sensitive">Ultra sensitive</string>
+
+    <!-- Shake to secure -->
+    <string name="shake_to_secure_title">Shake the lockscreen to enable security</string>
+    <string name="shake_to_secure_summary">Security will be disabled after each successful unlock</string>
+    <string name="shake_to_secure_dlg_title">Warning:</string>
+    <string name="shake_to_secure_dlg_message">Your device will be insecure until you explicitly shake to enable a temporary secure lock.  Once secure: if your device is successfully unlocked it will become insecure until you shake again.</string>
+    <string name="shake_secure_timeout_title">Automatically resecure</string>
+    <string name="shake_secure_timeout_disabled">Never automatically secure</string>
+    <string name="shake_secure_timeout_1min">1 minute after screen turned off</string>
+    <string name="shake_secure_timeout_5min">5 minutes after screen turned off</string>
+    <string name="shake_secure_timeout_10min">10 minutes after screen turned off</string>
+    <string name="shake_secure_timeout_30min">30 minutes after screen turned off</string>
 
     <!-- Sizes for pattern lockscreen -->
     <string name="lock_pattern_size_3">3x3</string>
@@ -831,5 +839,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Bluetooth accept all Filestypes -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
+
+    <!-- Settings checkbox for updating recovery on boot -->
+    <string name="update_recovery_title">Update recovery</string>
+    <string name="update_recovery_summary">Update recovery when installing system updates</string>
+
+    <!--Blacklist-->
+    <string name="blacklist_button_title">Blacklist</string>
+    <string name="peek_blacklist_label">Blacklist from Peek</string>
+    <string name="floating_blacklist_label">Blacklist from floating mode</string>
+    <string name="hover_blacklist_label">Blacklist from Hover</string>
 
 </resources>

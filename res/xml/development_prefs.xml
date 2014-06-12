@@ -90,6 +90,11 @@
         android:title="@string/enable_quickboot_title"
         android:summary="@string/enable_quickboot_summary" />
 
+    <CheckBoxPreference
+        android:key="update_recovery"
+        android:title="@string/update_recovery_title"
+        android:summary="@string/update_recovery_summary" />
+
     <PreferenceCategory android:key="debug_debugging_category"
             android:title="@string/debug_debugging_category">
 
@@ -200,26 +205,23 @@
             android:title="@string/force_rtl_layout_all_locales"
             android:summary="@string/force_rtl_layout_all_locales_summary"/>
 
-        <ListPreference
+        <com.android.settings.AnimationScalePreference
             android:key="window_animation_scale"
             android:title="@string/window_animation_scale_title"
-            android:persistent="false"
-            android:entries="@array/window_animation_scale_entries"
-            android:entryValues="@array/window_animation_scale_values" />
+            android:dialogTitle="@string/window_animation_scale_title"
+            android:persistent="false" />
 
-        <ListPreference
+        <com.android.settings.AnimationScalePreference
             android:key="transition_animation_scale"
             android:title="@string/transition_animation_scale_title"
-            android:persistent="false"
-            android:entries="@array/transition_animation_scale_entries"
-            android:entryValues="@array/transition_animation_scale_values" />
+            android:dialogTitle="@string/transition_animation_scale_title"
+            android:persistent="false" />
 
-        <ListPreference
+        <com.android.settings.AnimationScalePreference
             android:key="animator_duration_scale"
             android:title="@string/animator_duration_scale_title"
-            android:persistent="false"
-            android:entries="@array/animator_duration_scale_entries"
-            android:entryValues="@array/animator_duration_scale_values" />
+            android:dialogTitle="@string/animator_duration_scale_title"
+            android:persistent="false" />
 
         <ListPreference
             android:key="overlay_display_devices"
@@ -330,11 +332,6 @@
             android:title="@string/show_all_anrs"
             android:summary="@string/show_all_anrs_summary"/>
 
-        <CheckBoxPreference
-            android:key="kill_app_longpress_back"
-            android:title="@string/kill_app_longpress_back"
-            android:summary="@string/kill_app_longpress_back_summary"/>
-
-    </PreferenceCategory>
+     </PreferenceCategory>
 
 </PreferenceScreen>
