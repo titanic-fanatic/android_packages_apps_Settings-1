@@ -764,7 +764,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     /* package */ static boolean isRootForAppsEnabled() {
         int value = SystemProperties.getInt(ROOT_ACCESS_PROPERTY, 1);
-        return value == 1 || value == 3;
+        boolean daemonState = SystemProperties.get("init.svc.su_daemon", "absent").equals("running");
+        return daemonState && (value == 1 || value == 3);
     }
 
     private void writeRootAccessOptions(Object newValue) {
@@ -1169,7 +1170,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         boolean value = mForceRtlLayout.isChecked();
         Settings.Global.putInt(getActivity().getContentResolver(),
                 Settings.Global.DEVELOPMENT_FORCE_RTL, value ? 1 : 0);
-        SystemProperties.set(Settings.Global.DEVELOPMENT_FORCE_RTL, value ? "1" : "0");
+        SystemProperties.set(Settings.Global.DEVELOPMENT_FORCE_RTL, value ? "true" : "false");
         LocalePicker.updateLocale(getActivity().getResources().getConfiguration().locale);
     }
 

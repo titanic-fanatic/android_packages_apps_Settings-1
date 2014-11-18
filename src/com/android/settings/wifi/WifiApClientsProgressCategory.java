@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 The CyanogenMod Project
+ * Copyright (C) 2012 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,16 @@
  * limitations under the License.
  */
 
-package com.android.settings.profiles;
+package com.android.settings.wifi;
 
-import android.app.Profile;
+import com.android.settings.ProgressCategory;
+import com.android.settings.R;
+
 import android.content.Context;
-import android.preference.Preference;
+import android.util.AttributeSet;
 
-public class AbstractTriggerPreference extends Preference {
-
-    public AbstractTriggerPreference(Context context) {
-        super(context);
-    }
-
-    private int mTriggerState = Profile.TriggerState.DISABLED;
-
-    public void setTriggerState(int trigger) {
-        mTriggerState = trigger;
-    }
-
-    public int getTriggerState() {
-        return mTriggerState;
+public class WifiApClientsProgressCategory extends ProgressCategory {
+    public WifiApClientsProgressCategory(Context context, AttributeSet attrs) {
+        super(context, attrs, R.string.wifi_ap_client_none_connected);
     }
 }
